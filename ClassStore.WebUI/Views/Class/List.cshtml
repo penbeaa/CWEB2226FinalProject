@@ -1,0 +1,18 @@
+﻿@model ClassStore.WebUI.Models.ClassesListViewModel
+
+
+@{
+    ViewBag.Title = "Classes";
+}
+
+@foreach(var c in Model.Classes) 
+{
+    @Html.Partial("ClassSummary", c) 
+} 
+
+
+
+<div class="btn-group float-end">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+                    new { page = x, category = Model.CurrentCategory }))
+</div>
